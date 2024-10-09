@@ -1,12 +1,11 @@
 const net = require("net");
 const fs = require("fs")
-let i = 0;
 
 const tcpServer = net.createServer(
     (socket) => {
-        console.log('a client connected');
-            
-        const writeStream = fs.createWriteStream(`received_data${i}.txt`);
+        console.log('a client connected',socket.remotePort);
+        
+        const writeStream = fs.createWriteStream(`received_data ${socket.remotePort}.txt`);
 
         socket.on("data", (clientData) => {
             console.log("Datos recibidos");
@@ -18,8 +17,6 @@ const tcpServer = net.createServer(
         socket.on('end', () => {
             console.log('Client disconnected');
             writeStream.end();
-            i++;
-            console.log("aumentando i",i);
             
         });
         socket.on("error", (e) => {
@@ -31,4 +28,5 @@ const tcpServer = net.createServer(
     }
 )
 
-tcpServer.listen(3000,()=>console.log("Server on port 3000"))
+tcpServer.listen(3000,()=>console.log("Server on port 3000"));
+
