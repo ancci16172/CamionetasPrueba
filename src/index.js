@@ -13,6 +13,9 @@ const tcpServer = net.createServer(
         client.on("error",() => {
             console.log("Error en cliente a gps110");
         })
+        client.on("end",() => {
+            console.log("GPS110 Client disconnected");
+        })
 
         client.on("drain",()=> {
             console.log("Drain on gps110 client.");  
