@@ -1,6 +1,8 @@
 const net = require("net");
 const fs = require("fs")
 
+
+
 const tcpServer = net.createServer(
     (socket) => {
 
@@ -16,8 +18,8 @@ const tcpServer = net.createServer(
             console.log("Drain on gps110 client.");  
         })
 
-        client.on("data",() => {
-            console.log("datareceived gps110 client");   
+        client.on("data",(data) => {
+            console.log("datareceived gps110 client -> ",data,"\n as string: ",data.toString("utf-8"));   
         })
 
 
