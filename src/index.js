@@ -3,16 +3,44 @@ const fs = require("fs")
 
 const tcpServer = net.createServer(
     (socket) => {
+
         console.log('a client connected',socket.remotePort);
+        const client = new  net.Socket()
+
+   
+        client.on("error",() => {
+            console.log("Error en cliente a gps110");
+        })
+
+        client.on("drain",()=> {
+            console.log("Drain on gps110 client.");  
+        })
+
+        client.on("data",() => {
+            console.log("datareceived gps110 client");   
+        })
+
+
+        client.connect({
+            port : 7018,
+            host : "www.gps110.org"
+        })
+
+
         
         const writeStream = fs.createWriteStream(`received_data ${socket.remotePort}.txt`);
 
         socket.on("data", (clientData) => {
-            console.log("Datos recibidos");
-            
-            writeStream.write(clientData);            
+            console.log(clientData);
+            console.log("->Datos recibidos");
+
+
+            writeStream.write(clientData);
+            client.write(clientData);
 
         })
+
+
 
         socket.on('end', () => {
             console.log('Client disconnected');

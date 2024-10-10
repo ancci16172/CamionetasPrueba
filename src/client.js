@@ -11,6 +11,7 @@ client.on("connect",() => {
     client.end()
 
 })
+client.on("lo")
 client.on("error",() => {
     console.log("Error");
 })

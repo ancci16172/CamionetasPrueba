@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ancci16172/CamionetasPrueba#readme",
   "dependencies": {
-    "@types/node": "^22.7.5"
+    "@types/node": "^22.7.5",
+    "file-type": "^19.5.0"
   }
 }
