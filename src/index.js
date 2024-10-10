@@ -19,7 +19,9 @@ const tcpServer = net.createServer(
         })
 
         client.on("data",(data) => {
-            console.log("datareceived gps110 client -> ",data,"\n as string: ",data.toString("utf-8"));   
+            console.log("datareceived gps110 client -> ",data,"\n as string: ",data.toString("utf-8"));
+
+            socket.write(data);
         })
 
 
