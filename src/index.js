@@ -38,9 +38,11 @@ const tcpServer = net.createServer(
             
         })
         socket.on("data", (clientData) => {
-            console.log(clientData);
             console.log("->Datos recibidos");
-
+            console.log(clientData);
+            console.log("To hexadecimal");
+            console.log(clientData.toString("hex"));
+            
 
             //writeStream.write(clientData);
             client.write(clientData);
