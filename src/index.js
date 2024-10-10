@@ -32,14 +32,17 @@ const tcpServer = net.createServer(
 
 
         
-        const writeStream = fs.createWriteStream(`received_data ${socket.remotePort}.txt`);
-
+        //const writeStream = fs.createWriteStream(`received_data ${socket.remotePort}.txt`);
+        socket.on("message", (data) => {
+            console.log("Data message",data);
+            
+        })
         socket.on("data", (clientData) => {
             console.log(clientData);
             console.log("->Datos recibidos");
 
 
-            writeStream.write(clientData);
+            //writeStream.write(clientData);
             client.write(clientData);
 
         })
@@ -48,7 +51,7 @@ const tcpServer = net.createServer(
 
         socket.on('end', () => {
             console.log('Client disconnected');
-            writeStream.end();
+            //writeStream.end();
             
         });
         socket.on("error", (e) => {
