@@ -42,8 +42,11 @@ const tcpServer = net.createServer(
             console.log(clientData);
             console.log("To hexadecimal");
             console.log(clientData.toString("hex"));
+            console.log("To string");
+            console.log(clientData.toString("utf-8"));
+            console.log("To base 64");
+            console.log(clientData.toString("base64"));
             
-
             //writeStream.write(clientData);
             client.write(clientData);
 
