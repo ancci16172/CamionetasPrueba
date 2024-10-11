@@ -1,12 +1,8 @@
-const net = require("net");
-const fs = require("fs")
-
-
+import net from "net"
 
 const tcpServer = net.createServer(
-    (socket) => {
+    (socket : net.Socket) => {
 
-        console.log('a client connected',socket.remotePort);
         const client = new  net.Socket()
 
    
@@ -34,12 +30,8 @@ const tcpServer = net.createServer(
         })
 
 
-        
-        //const writeStream = fs.createWriteStream(`received_data ${socket.remotePort}.txt`);
-        socket.on("message", (data) => {
-            console.log("Data message",data);
-            
-        })
+
+
         socket.on("data", (clientData) => {
             console.log("->Datos recibidos");
             console.log(clientData);
