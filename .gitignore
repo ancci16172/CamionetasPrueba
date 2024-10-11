@@ -2,3 +2,4 @@ received_data*
 node_modules
 ignore
 \.env.*
+dist

@@ -1,4 +1,4 @@
-import {TcpServer} from "./app/server"
+import {TcpServer} from "../app/server"
 import {config} from "dotenv";
 
 type envFiles = "development" | "production"
