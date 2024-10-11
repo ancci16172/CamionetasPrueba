@@ -71,6 +71,5 @@ const tcpServer = net.createServer(
     }
 )
 
-const puerto = process.argv[2];
+const puerto = Number(process.argv[2]);
 tcpServer.listen(puerto,()=>console.log("Server on port "+puerto));
-
