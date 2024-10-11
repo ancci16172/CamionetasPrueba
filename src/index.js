@@ -70,6 +70,7 @@ const tcpServer = net.createServer(
         })
     }
 )
-const puerto = 7000;
+
+const puerto = process.argv[2];
 tcpServer.listen(puerto,()=>console.log("Server on port "+puerto));
 
