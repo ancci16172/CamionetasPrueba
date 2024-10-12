@@ -1,5 +1,5 @@
 import net from "net"
-import { PositionBufferGt06Decoder } from "../src/position/domain/PositionBufferGt06";
+import { PositionBufferGt06Decoder } from "../position/domain/PositionBufferGt06";
 
 export class ServerSocket{
 

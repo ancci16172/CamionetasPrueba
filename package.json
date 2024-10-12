@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start" : "ts-node app/start.ts",
+    "start" : "SET NODE_ENV=development&&node dist/src/app/start.js",
     "dev" : "SET NODE_ENV=development&&ts-node app/start.ts",
     "debug" : "ts-node src/position/domain/PositionBufferGt06.ts"
   },
