@@ -55,7 +55,6 @@ export class ServerSocket{
             
             const position = PositionBufferGt06Decoder.decode(bufferDataFromGps,this.imei);
             
-            console.log(bufferDataFromGps);
             console.log(position);
 
             if(position == null) return ;

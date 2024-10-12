@@ -16,7 +16,7 @@ export class MysqlPositionRepository extends MysqlRepository{
             console.log(error);
             console.log("ERROR NO SE PUDIERON ALMACENAR LAS COORDENADAS");
             
-                        
+            
         }
 
     }
