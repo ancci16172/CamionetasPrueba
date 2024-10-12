@@ -15,6 +15,10 @@ export class Fecha extends Date{
                 
     }
 
+    getValue() : string {
+        return this.toISOString();
+    }
+
 }
 
 Fecha.fromBuffer(ejemploBuffer)

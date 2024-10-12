@@ -9,7 +9,9 @@ export class Coordenada{
 
     }
 
-
+    getValue(){
+        return this.value;
+    }
 
 
     //Recibe un buffer de longitud 4 bytes

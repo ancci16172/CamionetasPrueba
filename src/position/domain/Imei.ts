@@ -7,6 +7,9 @@ export class Imei{
 
     }
 
+    getValue(){
+        return this.value;
+    }
 
     static decode(buffer : Buffer){
         //Si no es un inicio de sesion no ejecuta el login

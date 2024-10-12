@@ -1,4 +1,5 @@
 import { Imei } from "./Imei";
+import { Position } from "./Position";
 import { CellId } from "./value-object/CellId";
 import { Coordenada } from "./value-object/Coordenada";
 import { Fecha } from "./value-object/Fecha";
@@ -21,20 +22,13 @@ export class PositionBufferGt06Decoder {
 
     const bufferLength = buffer.at(2);
     const bufferType = buffer.at(3);
-    const fechaFromBuffer = Fecha.fromBuffer(buffer.subarray(4,10))
+    const fecha = Fecha.fromBuffer(buffer.subarray(4,10))
     const latitud = Coordenada.fromBuffer(buffer.subarray(11,15))
     const longitud = Coordenada.fromBuffer(buffer.subarray(15,19))
     const velocidad = buffer.at(19);
     const cellId = CellId.fromBuffer(buffer.subarray(27,30));
 
-    return {
-      fecha: fechaFromBuffer,
-      latitud: latitud,
-      longitud: longitud,
-      velocidad: velocidad,
-      cellId: cellId,
-      imei
-    }
+    return new Position(imei,latitud,longitud,fecha)
     
   }
 }
