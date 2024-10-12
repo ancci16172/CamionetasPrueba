@@ -30,6 +30,7 @@ export class ServerSocket{
         })
         this.socket.on("data",(bufferDataFromGps)=>{
             console.log(bufferDataFromGps);
+            
             const position = PositionBufferGt06Decoder.decode(bufferDataFromGps);
             console.log(position);
             //TODO almacenar las ubicaciones en la base de datos de BGM

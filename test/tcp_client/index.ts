@@ -13,7 +13,7 @@ const client = new net.Socket();
 
 client.on("connect",() => {
     console.log("Client connectesd");
-    client.write(buffer);
+    // client.write(buffer);
     client.end()
 })
 
