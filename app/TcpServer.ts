@@ -11,7 +11,6 @@ export class TcpServer{
         
         this.server = net.createServer({})
         this.setConnectionListener();
-        
     }
 
 

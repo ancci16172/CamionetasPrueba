@@ -1,4 +1,5 @@
 import net from "net"
+import { PositionBufferGt06Decoder } from "../src/position/domain/PositionBufferGt06";
 
 export class ServerSocket{
 
@@ -26,6 +27,12 @@ export class ServerSocket{
         })
         this.socket.on("close", (c) => {
             console.log("close",c);
+        })
+        this.socket.on("data",(bufferDataFromGps)=>{
+            console.log(bufferDataFromGps);
+            const position = PositionBufferGt06Decoder.decode(bufferDataFromGps);
+            console.log(position);
+            //TODO almacenar las ubicaciones en la base de datos de BGM
         })
     }
 

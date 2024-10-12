@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "start" : "ts-node app/start.ts",
+    "dev" : "SET NODE_ENV=development&&ts-node app/start.ts",
+    "debug" : "ts-node src/position/domain/PositionBufferGt06.ts"
   },
   "repository": {
     "type": "git",
