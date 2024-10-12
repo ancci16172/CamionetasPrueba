@@ -1,10 +1,12 @@
 import net from "net"
 import { PositionBufferGt06Decoder } from "../position/domain/PositionBufferGt06";
+import { Imei } from "../position/domain/Imei";
 
 export class ServerSocket{
-
+    private imei : Imei | null = null;
     constructor(
         private socket : net.Socket
+        
     ){
         
 
@@ -28,10 +30,31 @@ export class ServerSocket{
         this.socket.on("close", (c) => {
             console.log("close",c);
         })
-        this.socket.on("data",(bufferDataFromGps)=>{
-            console.log(bufferDataFromGps);
+        
+        //On login data set IMEI 
+        this.socket.on("data",(loginData)=>{
+            if(this.imei != null) return;
+
+            const imeiOnData = Imei.decode(loginData);
+
+            if(imeiOnData == null) return;
+                
+
+            this.imei = imeiOnData;
+
+            console.log("IMEI set",this.imei);
+        
             
-            const position = PositionBufferGt06Decoder.decode(bufferDataFromGps);
+
+        })
+        this.socket.on("data",(bufferDataFromGps)=>{
+            
+            //Si no se logueo anteriormente no se procesan los datos del gps.
+            if(this.imei == null) return;
+            
+            console.log(bufferDataFromGps);
+
+            const position = PositionBufferGt06Decoder.decode(bufferDataFromGps,this.imei);
             console.log(position);
             //TODO almacenar las ubicaciones en la base de datos de BGM
         })

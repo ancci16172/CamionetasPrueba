@@ -1,3 +1,4 @@
+import { Imei } from "./Imei";
 import { CellId } from "./value-object/CellId";
 import { Coordenada } from "./value-object/Coordenada";
 import { Fecha } from "./value-object/Fecha";
@@ -12,7 +13,7 @@ export class PositionBufferGt06Decoder {
   //Indica que el buffer es una posicion.
   private static readonly LOCATION_TYPE_IDENTIFIER = 0x22; 
 
-  static decode(buffer: Buffer) {
+  static decode(buffer: Buffer,imei : Imei) {
 
     if(buffer.at(3) !== this.LOCATION_TYPE_IDENTIFIER){
       return null;
@@ -31,7 +32,8 @@ export class PositionBufferGt06Decoder {
       latitud: latitud,
       longitud: longitud,
       velocidad: velocidad,
-      cellId: cellId
+      cellId: cellId,
+      imei
     }
     
   }
